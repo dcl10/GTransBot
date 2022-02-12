@@ -13,6 +13,9 @@ def detect_lang(content: str) -> DetectLanguageResponse:
     Returns:
         DetectLanguageResponse: the detected language
     """
-    return client.detect_language(
+    languages = client.detect_language(
         parent="projects/translation-discord-bot-341022", content=content
     )
+    language = languages.languages[0]
+    code = language.language_code
+    return code

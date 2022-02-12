@@ -5,6 +5,7 @@ import os
 
 class TestDetectLanguage(TestCase):
     def test_detect_lang(self):
-        print(os.environ.items())
-        print(detect_lang("hello there!"))
-        self.assertFalse(True)
+        # correctly identifies English phrase
+        self.assertEqual(detect_lang("Hello, there"), "en")
+        # correctly identifies Japanese phrase
+        self.assertEqual(detect_lang("こんにちは"), "ja")
