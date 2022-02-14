@@ -1,7 +1,8 @@
-import os
 from google.cloud.translate_v3 import TranslationServiceClient
+from dotenv import load_dotenv
 
 
-os.environ.update({"GOOGLE_APPLICATION_CREDENTIALS": "venv/translation-config.json"})
+load_dotenv(".env")
+
 
 client = TranslationServiceClient()

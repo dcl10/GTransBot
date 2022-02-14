@@ -1,7 +1,5 @@
 import os
-
 from . import client
-from google.cloud.translate_v3.types import DetectLanguageResponse
 
 
 def detect_lang(content: str) -> str:
@@ -14,7 +12,7 @@ def detect_lang(content: str) -> str:
         str: the detected language.
     """
     languages = client.detect_language(
-        parent="projects/translation-discord-bot-341022", content=content
+        parent=f'projects/{os.getenv("GOOGLE_TRANSLATE_PARENT")}', content=content
     )
     language = languages.languages[0]
     code = language.language_code
@@ -34,7 +32,7 @@ def translate_text(content: str, target_lang: str = "ja") -> str:
     response = client.translate_text(
         contents=[content],
         target_language_code=target_lang,
-        parent="projects/translation-discord-bot-341022",
+        parent=f'projects/{os.getenv("GOOGLE_TRANSLATE_PARENT")}',
         mime_type="text/plain",
     )
     translation = response.translations[0]
