@@ -2,7 +2,7 @@ from unittest import TestCase
 from gtransbot.translation.translation import detect_lang
 
 
-class TestDetectLanguage(TestCase):
+class TestTranslationModule(TestCase):
     def test_detect_lang(self):
         # correctly identifies English phrase
         self.assertEqual(detect_lang("Hello, there"), "en")
