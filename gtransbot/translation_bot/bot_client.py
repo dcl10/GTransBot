@@ -25,9 +25,10 @@ class GTransClient(commands.Bot):
         if detect_lang(self.translation_client, message.content) != os.getenv(
             "DEFAULT_SERVER_LANG"
         ):
-            translation = translate_text(
-                self.translation_client,
-                message.content,
-                os.getenv("DEFAULT_SERVER_LANG"),
-            )
-            await message.reply(translation)
+            async with message.channel.typing():
+                translation = translate_text(
+                    self.translation_client,
+                    message.content,
+                    os.getenv("DEFAULT_SERVER_LANG"),
+                )
+                await message.reply(translation)
