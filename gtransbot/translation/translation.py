@@ -1,8 +1,8 @@
 import os
-from . import client
+from google.cloud.translate_v3 import TranslationServiceClient
 
 
-def detect_lang(content: str) -> str:
+def detect_lang(client: TranslationServiceClient, content: str) -> str:
     """Detect the language of a text string.
 
     Args:
@@ -19,12 +19,14 @@ def detect_lang(content: str) -> str:
     return code
 
 
-def translate_text(content: str, target_lang: str = "ja") -> str:
+def translate_text(
+    client: TranslationServiceClient, content: str, target_lang: str
+) -> str:
     """Translate the content of a string into the target language.
 
     Args:
         content (str): The text to be translated.
-        target_lang (str, optional): The target language code. Defaults to "ja".
+        target_lang (str): The target language code.
 
     Returns:
         str: The translated content.

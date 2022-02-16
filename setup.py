@@ -16,5 +16,4 @@ setup(
             "build==0.7.0",
         ]
     },
-    test_suite="tests",
 )
