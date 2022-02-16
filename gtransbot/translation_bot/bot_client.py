@@ -20,9 +20,14 @@ class GTransClient(commands.Bot):
         if message.author.bot:
             return
 
-        # If someone
+        # If someone sends a message in the non-default language
+        # translate it to the default language
         if detect_lang(self.translation_client, message.content) != os.getenv(
             "DEFAULT_SERVER_LANG"
         ):
-            translation = translate_text(self.translation_client, message.content)
+            translation = translate_text(
+                self.translation_client,
+                message.content,
+                os.getenv("DEFAULT_SERVER_LANG"),
+            )
             await message.reply(translation)

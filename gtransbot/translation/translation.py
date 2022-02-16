@@ -20,13 +20,13 @@ def detect_lang(client: TranslationServiceClient, content: str) -> str:
 
 
 def translate_text(
-    client: TranslationServiceClient, content: str, target_lang: str = "ja"
+    client: TranslationServiceClient, content: str, target_lang: str
 ) -> str:
     """Translate the content of a string into the target language.
 
     Args:
         content (str): The text to be translated.
-        target_lang (str, optional): The target language code. Defaults to "ja".
+        target_lang (str): The target language code.
 
     Returns:
         str: The translated content.

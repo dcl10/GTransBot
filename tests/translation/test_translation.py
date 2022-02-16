@@ -18,6 +18,6 @@ class TestTranslationModule(TestCase):
 
     def test_translate_text(self):
         # correctly translates English to Japanese
-        self.assertEqual(translate_text(self.client, "test"), "テスト")
+        self.assertEqual(translate_text(self.client, "test", target_lang="ja"), "テスト")
         # correctly translates Japanese to English
         self.assertEqual(translate_text(self.client, "テスト", target_lang="en"), "test")
