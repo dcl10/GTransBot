@@ -1,8 +1,9 @@
 import os
-from discord import Client
+
+from discord.ext import commands
 
 
-class GTransClient(Client):
+class GTransClient(commands.Bot):
     async def on_ready(self):
         channel = self.get_channel(int(os.getenv("TEST_CHANNEL_ID")))
         await channel.send(
