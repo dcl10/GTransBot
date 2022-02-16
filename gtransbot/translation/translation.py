@@ -1,14 +1,8 @@
 import os
 from google.cloud.translate_v3 import TranslationServiceClient
-from dotenv import load_dotenv
-
-load_dotenv(".env")
 
 
-CLIENT = TranslationServiceClient()
-
-
-def detect_lang(content: str) -> str:
+def detect_lang(client: TranslationServiceClient, content: str) -> str:
     """Detect the language of a text string.
 
     Args:
@@ -17,7 +11,7 @@ def detect_lang(content: str) -> str:
     Returns:
         str: the detected language.
     """
-    languages = CLIENT.detect_language(
+    languages = client.detect_language(
         parent=f'projects/{os.getenv("GOOGLE_TRANSLATE_PARENT")}', content=content
     )
     language = languages.languages[0]
@@ -25,7 +19,9 @@ def detect_lang(content: str) -> str:
     return code
 
 
-def translate_text(content: str, target_lang: str = "ja") -> str:
+def translate_text(
+    client: TranslationServiceClient, content: str, target_lang: str = "ja"
+) -> str:
     """Translate the content of a string into the target language.
 
     Args:
@@ -35,7 +31,7 @@ def translate_text(content: str, target_lang: str = "ja") -> str:
     Returns:
         str: The translated content.
     """
-    response = CLIENT.translate_text(
+    response = client.translate_text(
         contents=[content],
         target_language_code=target_lang,
         parent=f'projects/{os.getenv("GOOGLE_TRANSLATE_PARENT")}',
