@@ -1,6 +1,6 @@
 import os
 from discord.ext import commands
-from gtransbot.translation.translation import detect_lang, translate_text
+from gtransbot.translation import detect_lang, translate_text
 
 
 class GTransClient(commands.Bot):

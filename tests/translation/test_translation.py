@@ -1,6 +1,6 @@
 from unittest import TestCase
 from google.cloud.translate_v3 import TranslationServiceClient
-from gtransbot.translation.translation import detect_lang, translate_text
+from gtransbot.translation import detect_lang, translate_text
 
 
 class TestTranslationModule(TestCase):
