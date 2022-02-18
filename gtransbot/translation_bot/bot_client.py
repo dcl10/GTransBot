@@ -20,6 +20,12 @@ class GTransClient(commands.Bot):
         if message.author.bot:
             return
 
+        # If someone sends a command in the message, execute it
+        ctx = await self.get_context(message)
+        if ctx.valid:
+            await self.process_commands(message)
+            return
+
         # If someone sends a message in the non-default language
         # translate it to the default language
         if detect_lang(self.translation_client, message.content) != os.getenv(
