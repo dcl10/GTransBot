@@ -25,4 +25,7 @@ setup(
             "build==0.7.0",
         ]
     },
+    entry_points={
+        "console_scripts": ["gtransbot=gtransbot.main:main"],
+    },
 )
