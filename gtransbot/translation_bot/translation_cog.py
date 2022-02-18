@@ -1,6 +1,6 @@
 from ast import arg
 from discord.ext import commands
-from translation import translate_text, detect_lang
+from gtransbot.translation import translate_text, detect_lang
 
 
 class Translation(commands.Cog):
