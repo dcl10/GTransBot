@@ -11,5 +11,5 @@ if __name__ == "__main__":
     bot = GTransClient(
         command_prefix="!", translation_client=TranslationServiceClient()
     )
-    bot.add_cog(Translation())
+    bot.add_cog(Translation(bot=bot))
     bot.run(os.getenv("DISCORD_BOT_TOKEN"))
